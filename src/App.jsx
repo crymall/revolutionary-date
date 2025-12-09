@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Title, Text, Button } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
-import "./repubdate/rdate.js";
+import "repubdate";
 import "./App.css";
 
 function App() {

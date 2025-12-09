@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap");
 
 :root {
   --parchment: #fdf5e6;
@@ -7,16 +7,18 @@
   --highlight: #fffef0;
 }
 
-body, html, #root {
-  min-height: 100%; 
+body,
+html,
+#root {
+  min-height: 100%;
   margin: 0;
   padding: 0;
   background-color: #d2b48c;
-  background-image: url('./assets/clean-gray-paper.png');
+  background-image: url("./assets/clean-gray-paper.png");
   font-family: "Times New Roman", Times, serif;
   color: var(--ink);
-  
-  box-sizing: border-box; 
+
+  box-sizing: border-box;
 }
 
 .vintage-wrapper {
@@ -24,34 +26,34 @@ body, html, #root {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh; 
-  min-height: 100dvh; 
-  
-  padding: 1rem; 
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  padding: 1rem;
 }
 
 .parchment-card {
-  background-color: var(--parchment);  
+  background-color: var(--parchment);
   width: 100%;
   max-width: 700px;
   padding: 3rem;
-  
+
   border: 4px double var(--wood);
   box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.4);
-  
+
   text-align: center;
   position: relative;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .vintage-title {
-  font-family: 'Cinzel', serif !important;
+  font-family: "Cinzel", serif !important;
   color: var(--wood);
   text-decoration: underline;
   text-transform: uppercase;
   letter-spacing: 2px;
-  
-  font-size: 2.5rem !important; 
+
+  font-size: 2.5rem !important;
   margin-bottom: 1rem !important;
   line-height: 1.1 !important;
 }
@@ -59,6 +61,44 @@ body, html, #root {
 .subtitle {
   margin: 0 0 1.25rem 0 !important;
   font-family: "Courier New", Courier, monospace !important;
+}
+
+.input-section {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+
+  .mantine-DatePickerInput-root {
+    flex-grow: 1;
+  }
+
+  div {
+    gap: 0;
+    flex-shrink: 0;
+
+    button {
+      font-family: "Times New Roman", serif !important;
+      font-weight: bold !important;
+      border-radius: 0 !important;
+      border: 2px solid var(--wood) !important;
+      transition: all 0.2s ease;
+
+      height: 42px !important;
+      min-height: unset !important;
+    }
+
+    button[data-variant="filled"] {
+      background-color: var(--wood) !important;
+      color: var(--parchment) !important;
+    }
+    button[data-variant="outline"] {
+      background-color: transparent !important;
+      color: var(--wood) !important;
+      border-color: var(--wood) !important;
+    }
+  }
 }
 
 .result-text {
@@ -73,7 +113,8 @@ body, html, #root {
 }
 
 .big-result {
-  font-family: "Brush Script MT", "Zapfino", "Segoe Script", "Dancing Script", cursive;
+  font-family: "Brush Script MT", "Zapfino", "Segoe Script", "Dancing Script",
+    cursive;
   font-size: 2.25rem;
   line-height: 1 !important;
 }
@@ -97,16 +138,27 @@ body, html, #root {
 
 @media (max-width: 600px) {
   .parchment-card {
-    padding: 1.5rem; 
-    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4); 
+    padding: 1.5rem;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
   }
 
   .vintage-title {
-    font-size: 1.8rem !important; 
+    font-size: 1.8rem !important;
     margin-bottom: 1.5rem !important;
   }
-  
+
   .result-text {
     font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 475px) {
+  .input-section {
+    flex-wrap: wrap;
+
+    div {
+      width: 100%;
+      justify-content: center;
+    }
   }
 }

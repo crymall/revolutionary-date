@@ -6,6 +6,7 @@ import "./App.css";
 
 function App() {
   const [dateValue, setDate] = useState(null);
+  const [isFrench, setIsFrench] = useState(false);
   let computedDate;
   let revolutionaryDate;
   let revolutionaryDay;
@@ -26,17 +27,17 @@ function App() {
       dateMessage = (
         <span>
           Zounds! This day is a{" "}
-          <span className="big-result">{revolutionaryMonth.ename}</span>! Enjoy
-          the <span className="big-result">{revolutionaryDay.ename}</span>!
+          <span className="big-result">{isFrench ? revolutionaryMonth.name : revolutionaryMonth.ename}</span>! Enjoy
+          the <span className="big-result">{isFrench ? revolutionaryDay.name : revolutionaryDay.ename}</span>!
         </span>
       );
     } else {
       dateMessage = (
         <span>
           The day of{" "}
-          <span className="big-result">{revolutionaryDay.ename}</span> in the
+          <span className="big-result">{isFrench ? revolutionaryDay.name : revolutionaryDay.ename}</span> in the
           month of{" "}
-          <span className="big-result">{revolutionaryMonth.ename}</span>.
+          <span className="big-result">{isFrench ? revolutionaryMonth.name : revolutionaryMonth.ename}</span>.
         </span>
       );
     }
@@ -54,16 +55,22 @@ function App() {
           your birthday!
         </p>
 
-        <DatePickerInput
-          label="Select a Gregorian (Filthy Royalist) Date:"
-          placeholder="Date"
-          value={dateValue}
-          onChange={setDate}
-          size="md"
-        />
+        <div className="input-section">
+          <DatePickerInput
+            label="Select a Gregorian (Filthy Royalist) Date:"
+            placeholder="Date"
+            value={dateValue}
+            onChange={setDate}
+            size="md"
+          />
 
-        <Button color="red">EN</Button>
-        <Button color="blue">FR</Button>
+          <div><Button onClick={() => setIsFrench(false)} variant={isFrench ? "outline" : "filled"} color="red" size="compact-md">
+            EN
+          </Button>
+          <Button onClick={() => setIsFrench(true)} variant={isFrench ? "filled" : "outline"} color="indigo" size="compact-md">
+            FR
+          </Button></div>
+        </div>
 
         {dateValue && (
           <Text size="xl" className="result-text">

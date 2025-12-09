@@ -1,35 +1,86 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { Title, Text, Button } from "@mantine/core";
+import { DatePickerInput } from "@mantine/dates";
+import "./repubdate/rdate.js";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [dateValue, setDate] = useState(null);
+  let computedDate;
+  let revolutionaryDate;
+  let revolutionaryDay;
+  let revolutionaryMonth;
+  let isComplementaryDay;
+  let numericDate;
+  let dateMessage;
+
+  if (dateValue) {
+    computedDate = new Date(dateValue + "T00:00");
+    revolutionaryDate = computedDate.toRevolutionaryObject();
+    revolutionaryDay = revolutionaryDate.day;
+    revolutionaryMonth = revolutionaryDate.month;
+    isComplementaryDay = revolutionaryMonth.number === 0;
+    numericDate = computedDate.toRevolutionaryString("numeric");
+
+    if (isComplementaryDay) {
+      dateMessage = (
+        <span>
+          Zounds! This day is a{" "}
+          <span className="big-result">{revolutionaryMonth.ename}</span>! Enjoy
+          the <span className="big-result">{revolutionaryDay.ename}</span>!
+        </span>
+      );
+    } else {
+      dateMessage = (
+        <span>
+          The day of{" "}
+          <span className="big-result">{revolutionaryDay.ename}</span> in the
+          month of{" "}
+          <span className="big-result">{revolutionaryMonth.ename}</span>.
+        </span>
+      );
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+    <div className="vintage-wrapper">
+      <div className="parchment-card">
+        <Title order={1} className="vintage-title">
+          Revolutionary Date
+        </Title>
+
+        <p className="subtitle">
+          The official date interpreter of the French Republican Calendar. Try
+          your birthday!
         </p>
+
+        <DatePickerInput
+          label="Select a Gregorian (Filthy Royalist) Date:"
+          placeholder="Date"
+          value={dateValue}
+          onChange={setDate}
+          size="md"
+        />
+
+        <Button color="red">EN</Button>
+        <Button color="blue">FR</Button>
+
+        {dateValue && (
+          <Text size="xl" className="result-text">
+            <p>{dateMessage}</p>
+            <p>{numericDate}</p>
+          </Text>
+        )}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      {/* Optional 90s footer style */}
+      <div
+        style={{ marginTop: "20px", fontStyle: "italic", fontSize: "0.8rem" }}
+      >
+        ~ FRC Since 1793, site by Reed Gaines ~
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

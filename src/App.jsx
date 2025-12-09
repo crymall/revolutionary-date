@@ -58,11 +58,15 @@ function App() {
         <div className="input-section">
           <DatePickerInput
             label="Select a Gregorian (Filthy Royalist) Date:"
-            dropdownType="modal"
             placeholder="Date"
             value={dateValue}
             onChange={setDate}
             size="md"
+            popoverProps={{
+              middlewares: {
+                flip: false,
+              }
+            }}
           />
 
           <div><Button onClick={() => setIsFrench(false)} variant={isFrench ? "outline" : "filled"} color="red" size="compact-md">

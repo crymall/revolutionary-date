@@ -1,16 +1,7 @@
-# React + Vite
+# Revolutionary Date
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple React app that allows a user to pick a Gregorian date and know the equivalent date in the [French Republican Calendar](https://en.wikipedia.org/wiki/French_Republican_calendar).
 
-Currently, two official plugins are available:
+All thanks to GH user mcorrell, who created the npm package [repubdate](https://github.com/mcorrell/repubdate), a modified version of which this uses. More can be found in the README in src/repubdate.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+If you have suggestions or ideas for changes, off with your head! Just kidding. Go ahead and fork and PR.
